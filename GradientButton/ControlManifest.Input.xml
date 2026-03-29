@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="longnt" constructor="GradientButton" version="1.0.0" display-name-key="GradientButton" description-key="GradientButton_Desc" control-type="standard">
+
+    <property name="label" display-name-key="Label" description-key="Label_Desc"
+              of-type="SingleLine.Text" usage="input" required="true" default-value="Click Me" />
+    <property name="isDisabled" display-name-key="Is_Disabled" description-key="Is_Disabled_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="isLoading" display-name-key="Is_Loading" description-key="Is_Loading_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="loadingText" display-name-key="Loading_Text" description-key="Loading_Text_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="Loading..." />
+    <property name="tooltipText" display-name-key="Tooltip_Text" description-key="Tooltip_Text_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+
+    <property name="gradientType" display-name-key="Gradient_Type" description-key="Gradient_Type_Desc"
+              of-type="Enum" usage="input" required="false" default-value="linear">
+      <value name="linear"  display-name-key="Linear">linear</value>
+      <value name="radial"  display-name-key="Radial">radial</value>
+      <value name="conic"   display-name-key="Conic">conic</value>
+      <value name="solid"   display-name-key="Solid">solid</value>
+    </property>
+
+    <property name="gradientColorStart" display-name-key="Gradient_Color_Start" description-key="Gradient_Color_Start_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#667eea" />
+    <property name="gradientColorMid" display-name-key="Gradient_Color_Mid" description-key="Gradient_Color_Mid_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="gradientColorEnd" display-name-key="Gradient_Color_End" description-key="Gradient_Color_End_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#764ba2" />
+    <property name="gradientAngle" display-name-key="Gradient_Angle" description-key="Gradient_Angle_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="135" />
+    <property name="gradientStartPosition" display-name-key="Gradient_Start_Position" description-key="Gradient_Start_Position_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0" />
+    <property name="gradientEndPosition" display-name-key="Gradient_End_Position" description-key="Gradient_End_Position_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="100" />
+
+    <property name="hoverGradientColorStart" display-name-key="Hover_Gradient_Color_Start" description-key="Hover_Gradient_Color_Start_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="hoverGradientColorEnd" display-name-key="Hover_Gradient_Color_End" description-key="Hover_Gradient_Color_End_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+    <property name="hoverGradientAngle" display-name-key="Hover_Gradient_Angle" description-key="Hover_Gradient_Angle_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="135" />
+
+    <property name="buttonWidth" display-name-key="Button_Width" description-key="Button_Width_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="auto" />
+    <property name="buttonHeight" display-name-key="Button_Height" description-key="Button_Height_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="auto" />
+    <property name="paddingTop" display-name-key="Padding_Top" description-key="Padding_Top_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="12" />
+    <property name="paddingBottom" display-name-key="Padding_Bottom" description-key="Padding_Bottom_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="12" />
+    <property name="paddingLeft" display-name-key="Padding_Left" description-key="Padding_Left_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="24" />
+    <property name="paddingRight" display-name-key="Padding_Right" description-key="Padding_Right_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="24" />
+
+    <property name="horizontalAlignment" display-name-key="Horizontal_Alignment" description-key="Horizontal_Alignment_Desc"
+              of-type="Enum" usage="input" required="false" default-value="center">
+      <value name="left"    display-name-key="Left">left</value>
+      <value name="center"  display-name-key="Center">center</value>
+      <value name="right"   display-name-key="Right">right</value>
+      <value name="stretch" display-name-key="Stretch">stretch</value>
+    </property>
+
+    <property name="borderRadius" display-name-key="Border_Radius" description-key="Border_Radius_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="8" />
+    <property name="borderRadiusTopLeft" display-name-key="Border_Radius_TopLeft" description-key="Border_Radius_TopLeft_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="-1" />
+    <property name="borderRadiusTopRight" display-name-key="Border_Radius_TopRight" description-key="Border_Radius_TopRight_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="-1" />
+    <property name="borderRadiusBottomLeft" display-name-key="Border_Radius_BottomLeft" description-key="Border_Radius_BottomLeft_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="-1" />
+    <property name="borderRadiusBottomRight" display-name-key="Border_Radius_BottomRight" description-key="Border_Radius_BottomRight_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="-1" />
+    <property name="borderWidth" display-name-key="Border_Width" description-key="Border_Width_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0" />
+    <property name="borderColor" display-name-key="Border_Color" description-key="Border_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="transparent" />
+
+    <property name="borderStyle" display-name-key="Border_Style" description-key="Border_Style_Desc"
+              of-type="Enum" usage="input" required="false" default-value="solid">
+      <value name="solid"  display-name-key="Solid">solid</value>
+      <value name="dashed" display-name-key="Dashed">dashed</value>
+      <value name="dotted" display-name-key="Dotted">dotted</value>
+      <value name="double" display-name-key="Double">double</value>
+    </property>
+
+    <property name="gradientBorder" display-name-key="Gradient_Border" description-key="Gradient_Border_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="gradientBorderColorStart" display-name-key="Gradient_Border_Color_Start" description-key="Gradient_Border_Color_Start_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#667eea" />
+    <property name="gradientBorderColorEnd" display-name-key="Gradient_Border_Color_End" description-key="Gradient_Border_Color_End_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#764ba2" />
+
+    <property name="shadowEnabled" display-name-key="Shadow_Enabled" description-key="Shadow_Enabled_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="true" />
+    <property name="shadowColor" display-name-key="Shadow_Color" description-key="Shadow_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="rgba(102,126,234,0.4)" />
+    <property name="shadowOffsetX" display-name-key="Shadow_Offset_X" description-key="Shadow_Offset_X_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0" />
+    <property name="shadowOffsetY" display-name-key="Shadow_Offset_Y" description-key="Shadow_Offset_Y_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="4" />
+    <property name="shadowBlur" display-name-key="Shadow_Blur" description-key="Shadow_Blur_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="15" />
+    <property name="shadowSpread" display-name-key="Shadow_Spread" description-key="Shadow_Spread_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0" />
+    <property name="shadowInset" display-name-key="Shadow_Inset" description-key="Shadow_Inset_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="glowEnabled" display-name-key="Glow_Enabled" description-key="Glow_Enabled_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="glowColor" display-name-key="Glow_Color" description-key="Glow_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="rgba(102,126,234,0.6)" />
+    <property name="glowBlur" display-name-key="Glow_Blur" description-key="Glow_Blur_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="20" />
+    <property name="glowSpread" display-name-key="Glow_Spread" description-key="Glow_Spread_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0" />
+
+    <property name="fontFamily" display-name-key="Font_Family" description-key="Font_Family_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="Segoe UI, system-ui, sans-serif" />
+    <property name="fontSize" display-name-key="Font_Size" description-key="Font_Size_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="14" />
+
+    <property name="fontWeight" display-name-key="Font_Weight" description-key="Font_Weight_Desc"
+              of-type="Enum" usage="input" required="false" default-value="600">
+      <value name="300" display-name-key="Light">300</value>
+      <value name="400" display-name-key="Regular">400</value>
+      <value name="500" display-name-key="Medium">500</value>
+      <value name="600" display-name-key="SemiBold">600</value>
+      <value name="700" display-name-key="Bold">700</value>
+      <value name="800" display-name-key="ExtraBold">800</value>
+    </property>
+
+    <property name="fontStyle" display-name-key="Font_Style" description-key="Font_Style_Desc"
+              of-type="Enum" usage="input" required="false" default-value="normal">
+      <value name="normal" display-name-key="Normal">normal</value>
+      <value name="italic" display-name-key="Italic">italic</value>
+    </property>
+
+    <property name="textColor" display-name-key="Text_Color" description-key="Text_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#ffffff" />
+
+    <property name="textTransform" display-name-key="Text_Transform" description-key="Text_Transform_Desc"
+              of-type="Enum" usage="input" required="false" default-value="none">
+      <value name="none"       display-name-key="None">none</value>
+      <value name="uppercase"  display-name-key="Uppercase">uppercase</value>
+      <value name="lowercase"  display-name-key="Lowercase">lowercase</value>
+      <value name="capitalize" display-name-key="Capitalize">capitalize</value>
+    </property>
+
+    <property name="letterSpacing" display-name-key="Letter_Spacing" description-key="Letter_Spacing_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0" />
+    <property name="lineHeight" display-name-key="Line_Height" description-key="Line_Height_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="1.5" />
+    <property name="textShadowEnabled" display-name-key="Text_Shadow_Enabled" description-key="Text_Shadow_Enabled_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="false" />
+    <property name="textShadowColor" display-name-key="Text_Shadow_Color" description-key="Text_Shadow_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="rgba(0,0,0,0.3)" />
+    <property name="textShadowBlur" display-name-key="Text_Shadow_Blur" description-key="Text_Shadow_Blur_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="4" />
+
+    <property name="iconName" display-name-key="Icon_Name" description-key="Icon_Name_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="" />
+
+    <property name="iconPosition" display-name-key="Icon_Position" description-key="Icon_Position_Desc"
+              of-type="Enum" usage="input" required="false" default-value="left">
+      <value name="left"   display-name-key="Left">left</value>
+      <value name="right"  display-name-key="Right">right</value>
+      <value name="top"    display-name-key="Top">top</value>
+      <value name="bottom" display-name-key="Bottom">bottom</value>
+      <value name="only"   display-name-key="Icon_Only">only</value>
+    </property>
+
+    <property name="iconSize" display-name-key="Icon_Size" description-key="Icon_Size_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="16" />
+    <property name="iconGap" display-name-key="Icon_Gap" description-key="Icon_Gap_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="8" />
+
+    <property name="animationType" display-name-key="Animation_Type" description-key="Animation_Type_Desc"
+              of-type="Enum" usage="input" required="false" default-value="none">
+      <value name="none"    display-name-key="None">none</value>
+      <value name="pulse"   display-name-key="Pulse">pulse</value>
+      <value name="shimmer" display-name-key="Shimmer">shimmer</value>
+      <value name="bounce"  display-name-key="Bounce">bounce</value>
+      <value name="glow"    display-name-key="Glow">glow</value>
+    </property>
+
+    <property name="animationDuration" display-name-key="Animation_Duration" description-key="Animation_Duration_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="2" />
+    <property name="hoverScale" display-name-key="Hover_Scale" description-key="Hover_Scale_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="1.03" />
+    <property name="hoverBrightness" display-name-key="Hover_Brightness" description-key="Hover_Brightness_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="1.1" />
+    <property name="activeScale" display-name-key="Active_Scale" description-key="Active_Scale_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0.97" />
+    <property name="transitionDuration" display-name-key="Transition_Duration" description-key="Transition_Duration_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0.2" />
+    <property name="rippleEffect" display-name-key="Ripple_Effect" description-key="Ripple_Effect_Desc"
+              of-type="TwoOptions" usage="input" required="false" default-value="true" />
+    <property name="rippleColor" display-name-key="Ripple_Color" description-key="Ripple_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="rgba(255,255,255,0.3)" />
+
+    <property name="disabledGradientColorStart" display-name-key="Disabled_Gradient_Color_Start" description-key="Disabled_Gradient_Color_Start_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#cccccc" />
+    <property name="disabledGradientColorEnd" display-name-key="Disabled_Gradient_Color_End" description-key="Disabled_Gradient_Color_End_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#aaaaaa" />
+    <property name="disabledTextColor" display-name-key="Disabled_Text_Color" description-key="Disabled_Text_Color_Desc"
+              of-type="SingleLine.Text" usage="input" required="false" default-value="#666666" />
+    <property name="disabledOpacity" display-name-key="Disabled_Opacity" description-key="Disabled_Opacity_Desc"
+              of-type="Decimal" usage="input" required="false" default-value="0.6" />
+
+    <property name="onClickOutput" display-name-key="On_Click_Output" description-key="On_Click_Output_Desc"
+              of-type="SingleLine.Text" usage="output" />
+
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/GradientButton.css" order="1" />
+    </resources>
+  </control>
+</manifest>

@@ -1,0 +1,185 @@
+/* ═══════════════════════════════════════════════════════════════
+   SCGC PCF GradientButton — Stylesheet
+   ════════════════════════════════════════════════════════════════ */
+
+.gradient-button-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.gradient-button-wrapper.align-left    { justify-content: flex-start; }
+.gradient-button-wrapper.align-center  { justify-content: center; }
+.gradient-button-wrapper.align-right   { justify-content: flex-end; }
+.gradient-button-wrapper.align-stretch { justify-content: stretch; }
+.gradient-button-wrapper.align-stretch .gradient-button { width: 100%; }
+
+/* ── Base Button ─────────────────────────────────────────────── */
+.gradient-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+.gradient-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* ── Icon Layout ─────────────────────────────────────────────── */
+.gradient-button.icon-position-top,
+.gradient-button.icon-position-bottom {
+  flex-direction: column;
+}
+
+.gradient-button.icon-position-right  { flex-direction: row-reverse; }
+.gradient-button.icon-position-bottom { flex-direction: column-reverse; }
+
+.gradient-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gradient-button__label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Gradient Border (uses pseudo-element trick) ─────────────── */
+.gradient-button.has-gradient-border {
+  background-clip: padding-box;
+  border: none !important;
+}
+
+.gradient-button.has-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--gb-border-width, 2px);
+  background: var(--gb-border-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Shimmer Animation ───────────────────────────────────────── */
+.gradient-button.anim-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: gb-shimmer var(--gb-anim-duration, 2s) linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gb-shimmer {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* ── Pulse Animation ─────────────────────────────────────────── */
+.gradient-button.anim-pulse {
+  animation: gb-pulse var(--gb-anim-duration, 2s) ease-in-out infinite;
+}
+
+@keyframes gb-pulse {
+  0%, 100% { transform: scale(1); box-shadow: var(--gb-shadow, none); }
+  50%       { transform: scale(1.02); box-shadow: var(--gb-glow, none), var(--gb-shadow, none); }
+}
+
+/* ── Bounce Animation ────────────────────────────────────────── */
+.gradient-button.anim-bounce {
+  animation: gb-bounce var(--gb-anim-duration, 2s) cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+}
+
+@keyframes gb-bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+  40%, 43%                 { transform: translateY(-6px); }
+  70%                      { transform: translateY(-3px); }
+  90%                      { transform: translateY(-2px); }
+}
+
+/* ── Glow Animation ──────────────────────────────────────────── */
+.gradient-button.anim-glow {
+  animation: gb-glow var(--gb-anim-duration, 2s) ease-in-out infinite;
+}
+
+@keyframes gb-glow {
+  0%, 100% { box-shadow: var(--gb-shadow, none); }
+  50%       { box-shadow: var(--gb-glow-intense, none), var(--gb-shadow, none); }
+}
+
+/* ── Ripple ──────────────────────────────────────────────────── */
+.gradient-button__ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: gb-ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes gb-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── Loading Spinner ─────────────────────────────────────────── */
+.gradient-button__spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: gb-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes gb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Disabled State ──────────────────────────────────────────── */
+.gradient-button:disabled,
+.gradient-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gradient-button:disabled .gradient-button__ripple,
+.gradient-button[aria-disabled="true"] .gradient-button__ripple {
+  display: none;
+}
+
+/* ── Transition (applied via JS to avoid FOUC) ───────────────── */
+.gradient-button.transitions-ready {
+  transition:
+    transform var(--gb-transition, 0.2s) ease,
+    filter var(--gb-transition, 0.2s) ease,
+    box-shadow var(--gb-transition, 0.2s) ease,
+    background var(--gb-transition, 0.2s) ease,
+    opacity var(--gb-transition, 0.2s) ease;
+}
